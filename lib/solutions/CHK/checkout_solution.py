@@ -132,5 +132,6 @@ def checkout(skus):
                 break
         basPrices.append(tot+runningTot)
         return sum(basPrices)
-    except Exception as e:
-        return e
+    except:
+        return -1
+
