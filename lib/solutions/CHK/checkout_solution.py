@@ -103,5 +103,3 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
-
-
