@@ -42,7 +42,8 @@ class sItems(items):
 
     def tPrice(self, iNumber, fBasket):
         sPrice = iNumber*self.Price
-        discount = (self.freeItem.sOffValue * int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum) + 
+        if isinstance(self.freeItem, offItems) or isinstance(self.freeItem, multiOffItems) or isinstance(self.freeItem, selItems):
+            discount = (self.freeItem.sOffValue * int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum) + 
         (int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*((self.freeItem.Price*self.freeItem.sOffNum-self.freeItem.sOffValue) if fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum == 0 else self.freeItem.Price)
         if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
         else self.freeItem.sOffValue*int(fBasket.count(self.freeItem.Item)/self.freeItem.sOffNum) + 
@@ -104,5 +105,6 @@ def checkout(skus):
     except Exception as e:
         return e
 print(checkout('N'))
+
 
 
