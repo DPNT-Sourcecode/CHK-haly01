@@ -7,6 +7,9 @@ class items:
     def __init__(self, Item, Price):
         self.Item = Item
         self.Price = Price
+    
+    def tPrice(self, iNumber):
+        return self.Price * iNumber
 
 
 class offItems(items):
@@ -15,8 +18,15 @@ class offItems(items):
         self.sOffNum = sOffNum
         self.sOffValue = sOffValue
 
+    def tPrice(self, iNumber):
+        return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
+    
+    
+
+
         
         
 def checkout(skus):
     raise NotImplementedError()
+
 
