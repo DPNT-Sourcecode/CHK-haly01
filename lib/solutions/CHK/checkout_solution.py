@@ -120,11 +120,12 @@ def checkout(skus):
             tempList.append([i.Item, basket.count(i.Item), i.Price, i])
         tempList.sort(key=lambda x:int(x[2]))
         print('First Check')
-        totalItems = sum([i[2] for i in tempList])
-        Rd = totalItems%tempList[3].sOffNum
-        tot = tempList[3].sOffValue*int(totalItems/tempList[3].sOffNum)
+        totalItems = sum([i[1] for i in tempList])
+        print(totalItems)
+        Rd = totalItems%tempList[0][3].sOffNum
+        tot = tempList[0][3].sOffValue*int(totalItems/tempList[0][3].sOffNum)
         runningTot = 0
-        print("Second Check")
+        print(tot)
         for x in tempList:
             if Rd>x[1]:
                 runningTot= runningTot + x[1]*x[2]
