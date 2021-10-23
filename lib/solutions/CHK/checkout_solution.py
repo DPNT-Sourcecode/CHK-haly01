@@ -117,12 +117,12 @@ def checkout(skus):
                         basPrices.append([x.tPrice(basket.count(i), basket)][0])
         tempList=[] 
         for i in offerList:
-            tempList.append([i.Item, basket.count(i.Item), i.Price])
+            tempList.append([i.Item, basket.count(i.Item), i.Price, i])
         tempList.sort(key=lambda x:int(x[2]))
         print('First Check')
-        totalItems = [sum([x[2] for x in i]) for i in tempList]
-        Rd = totalItems%tempList[0].sOffNum
-        tot = tempList[0].sOffValue*int(totalItems/tempList[0].sOffNum)
+        totalItems = sum([i[2] for i in tempList])
+        Rd = totalItems%tempList[3].sOffNum
+        tot = tempList[3].sOffValue*int(totalItems/tempList[3].sOffNum)
         runningTot = 0
         print("Second Check")
         for x in tempList:
@@ -137,6 +137,3 @@ def checkout(skus):
     except Exception as e:
         return e
 print(checkout('XGSJATXBZY'))
-
-
-
