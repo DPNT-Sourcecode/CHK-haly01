@@ -65,6 +65,7 @@ def checkout(skus):
         for i in uItems:
             basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i][0])
         return sum(basPrices)
-    except -1:
+    except:
         return -1
+
 
