@@ -109,16 +109,18 @@ def checkout(skus):
         basPrices=[]
         offerList=[]
         for i in uItems:
-            basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i and not isinstance(x, pItems)][0])
+            #basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i and not isinstance(x, pItems)][0])
             offerList.append([x for x in itList if x.Item == i and isinstance(x, pItems)][0])
-        tempList=[]
+        tempList=[] 
         for i in offerList:
             tempList.append([i.Item, basket.count(i.Item), i.Price])
         tempList.sort(key=lambda x:int(x[2]))
+        
         totalItems = [sum([x[2] for x in i]) for i in tempList]
         Rd = totalItems%tempList[0].sOffNum
         tot = tempList[0].sOffValue*int(totalItems/tempList[0].sOffNum)
         runningTot = 0
+        print("Second Check")
         for x in tempList:
             if Rd>x[1]:
                 runningTot= runningTot + x[1]*x[2]
