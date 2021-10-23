@@ -50,6 +50,18 @@ class sItems(items):
 
         return sPrice-discount
 
+class selItems(items):
+    def __init__(self, Item, Price, sOffNum, sOffNumFree):
+        super().__init__(Item, Price)
+        self.sOffNum = sOffNum
+        self.sOffNumFree = sOffNumFree
+
+    def tPrice(self, iNumber, fBasket):
+        if fBasket.count(self.Item)%iNumber =< sOffNumFree:
+
+        return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
+
+
 def checkout(skus):
     itA = multiOffItems('A', 50, 3, 130, 5, 200)
     itB = offItems('B', 30, 2, 45)
@@ -68,3 +80,4 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
