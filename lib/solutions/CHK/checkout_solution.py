@@ -93,7 +93,7 @@ def checkout(skus):
     itZ = items('Z', 50)
 
     
-    itList = [itA, itB, itC, itD, itE, itF]
+    itList = [itA, itB, itC, itD, itE, itF, itG, itH, itI, itJ, itK, itL, itM, itN, itO, itP, itQ, itR, itS, itT, itU, itV, itW, itX, itY, itZ]
     try:
         basket=[vals for vals in skus]
         uItems = set(basket)
@@ -103,4 +103,5 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
 
