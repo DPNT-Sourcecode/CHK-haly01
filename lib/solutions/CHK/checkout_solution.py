@@ -56,6 +56,7 @@ def checkout(skus):
     itC = items('C', 20)
     itD = items('D', 15)
     itE = sItems('E', 40, 2, itB, 1)
+    itF = selItems('F', 10, 2, 1)
     
     itList = [itA, itB, itC, itD, itE]
     try:
