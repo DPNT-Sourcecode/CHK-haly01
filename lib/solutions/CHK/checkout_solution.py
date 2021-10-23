@@ -108,6 +108,3 @@ def checkout(skus):
     except:
         return -1
 print(checkout('PPPPPPQQQRRRUUUUVVVS'))
-
-
-
