@@ -27,7 +27,9 @@ def checkout(skus):
     itC = items('C', 20)
     itD = items('D', 15)
 
-    print([vals.upper() for vals in skus])
+    basket=[vals.upper() for vals in skus]
+    itemC = items()
+    [x for x in basket if x.Item == basket]
     
 checkout('ab')
 
