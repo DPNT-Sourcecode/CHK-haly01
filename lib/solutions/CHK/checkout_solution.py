@@ -71,6 +71,27 @@ def checkout(skus):
     itD = items('D', 15)
     itE = sItems('E', 40, 2, itB, 1)
     itF = selItems('F', 10, 2, 1)
+    itG = items('G', 20)
+    itH = multiOffItems('H', 10, 5, 45, 10, 80)
+    itI = items('I', 35)
+    itJ = items('J', 60)
+    itK = offItems('K', 80, 2, 150)
+    itL = items('L', 90)
+    itM = items('M', 15)
+    itN = sItems('N', 40, 3, itM, 1)
+    itO = items('O', 10)
+    itP = offItems('P', 50, 5, 200)
+    itQ = offItems('Q', 30, 3, 80)
+    itR = sItems('R', 50, 3, itQ, 1)
+    itS = items('S', 30)
+    itT = items('T', 20)
+    itU = selItems('U', 40, 3, 1)
+    itV = multiOffItems('V', 50, 2, 90, 3, 130)
+    itW = items('W', 20)
+    itX = items('X', 90)
+    itY = items('Y', 10)
+    itZ = items('Z', 50)
+
     
     itList = [itA, itB, itC, itD, itE, itF]
     try:
@@ -82,3 +103,4 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
