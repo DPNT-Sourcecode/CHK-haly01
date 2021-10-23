@@ -54,9 +54,12 @@ class sItems(items):
     def tPrice(self, iNumber, fBasket):
         sPrice = iNumber*self.Price
         if isinstance(self.freeItem, offItems) or isinstance(self.freeItem, selItems) or isinstance(self.freeItem, multiOffItems):
-            discount = (self.freeItem.tPrice(fBasket.count(self.freeItem.Item), fBasket) - self.freeItem.tPrice(fBasket.count(self.freeItem.Item)%int(iNumber/self.sOffNum), fBasket)
-            if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
-            else 0)
+            try:
+                discount = (self.freeItem.tPrice(fBasket.count(self.freeItem.Item), fBasket) - self.freeItem.tPrice(fBasket.count(self.freeItem.Item)%int(iNumber/self.sOffNum), fBasket)
+                if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
+                else 0)
+            except:
+                discount=0
 
         else:
             discount = (int(iNumber/self.sOffNum)* self.freeItem.Price
@@ -105,3 +108,4 @@ def checkout(skus):
     except Exception as e:
         return e
 print(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+
