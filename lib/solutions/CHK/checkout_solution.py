@@ -25,9 +25,13 @@ def checkout(skus):
     itList = [offItems('A', 50, 3, 130), offItems('B', 30, 2, 45), items('C', 20), items('D', 15)]
     try:
         basket=[vals for vals in skus]
+        uItems = set(basket)
         basPrices=[]
-        for i in basket:
-            basPrices.append([x.tPrice() for x in itList if x.Item == i][0])
+        for i in uItems:
+            basPrices.append([x.tPrice(basket.count(i)) for x in itList if x.Item == i][0])
+        
         return sum(basPrices)
     except:
         return -1
+
+
