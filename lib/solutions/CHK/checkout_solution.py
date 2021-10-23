@@ -34,4 +34,3 @@ def checkout(skus):
     except:
         return -1
 
-
