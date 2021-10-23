@@ -120,9 +120,7 @@ def checkout(skus):
                         basPrices.append([x.tPrice(basket.count(i), basket)][0])
                     checkList.append(i)
         tempList=[]
-        print(list(uItems)-set(checkList))
-        if list(uItems-checkList) == []:
-            print(list(uItems-checkList))
+        if list(uItems-set(checkList)) != []:
             return -1
         
         try:
@@ -146,4 +144,5 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
-print(checkout('A'))
+
+
