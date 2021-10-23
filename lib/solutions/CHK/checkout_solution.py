@@ -107,8 +107,14 @@ def checkout(skus):
         basket=[vals for vals in skus]
         uItems = set(basket)
         basPrices=[]
+        offerList=[]
         for i in uItems:
             basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i and not isinstance(x, pItems)][0])
+            offerList.append([x for x in itList if x.Item == i and isinstance(x, pItems)][0])
+        tempList=[]
+        for i in offerList:
+            tempList.append([i.Item, basket.count(i.Item), i.Price])
+        
         return sum(basPrices)
     except:
         return -1
