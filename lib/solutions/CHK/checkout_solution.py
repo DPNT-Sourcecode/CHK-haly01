@@ -60,7 +60,7 @@ class selItems(items):
         if iNumber%(self.sOffNum+self.sOffNumFree) == 0:
             return int(iNumber/(self.sOffNum+self.sOffNumFree)) * 2 * self.Price
         else:
-            return int(iNumber/(self.sOffNum+self.sOffNumFree))*2 + iNumber%(self.sOffNum+self.sOffNumFree) * self.Price
+            return (int(iNumber/(self.sOffNum+self.sOffNumFree))*2 + iNumber%(self.sOffNum+self.sOffNumFree)) * self.Price
 
 
        
@@ -72,7 +72,7 @@ def checkout(skus):
     itE = sItems('E', 40, 2, itB, 1)
     itF = selItems('F', 10, 2, 1)
     
-    itList = [itA, itB, itC, itD, itE]
+    itList = [itA, itB, itC, itD, itE, itF]
     try:
         basket=[vals for vals in skus]
         uItems = set(basket)
@@ -80,7 +80,7 @@ def checkout(skus):
         for i in uItems:
             basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i][0])
         return sum(basPrices)
-    except:
-        return -1
+    except Exception as e:
+        return e
 
-
+print(checkout('AAFFFFFF'))
