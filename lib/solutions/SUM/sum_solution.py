@@ -8,4 +8,3 @@ def compute(int1, int2):
             return f'Please enter positive integers between 0-100 instead of {int1} and {int2}'
     except:
         return f'Invalid parameters {int1} and {int2}'
-
