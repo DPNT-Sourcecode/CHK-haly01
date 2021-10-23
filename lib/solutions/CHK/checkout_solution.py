@@ -112,14 +112,14 @@ def checkout(skus):
             for x in itList:
                 if x.Item == i:
                     if isinstance(x, pItems):
-                        offerList.append([x])
+                        offerList.append([x][0])
                     else:
                         basPrices.append([x.tPrice(basket.count(i), basket)][0])
         tempList=[] 
         for i in offerList:
             tempList.append([i.Item, basket.count(i.Item), i.Price])
         tempList.sort(key=lambda x:int(x[2]))
-        
+        print('First Check')
         totalItems = [sum([x[2] for x in i]) for i in tempList]
         Rd = totalItems%tempList[0].sOffNum
         tot = tempList[0].sOffValue*int(totalItems/tempList[0].sOffNum)
@@ -137,5 +137,6 @@ def checkout(skus):
     except Exception as e:
         return e
 print(checkout('XGSJATXBZY'))
+
 
 
