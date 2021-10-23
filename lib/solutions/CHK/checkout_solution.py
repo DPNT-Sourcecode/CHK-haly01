@@ -14,7 +14,7 @@ class items:
 
 class offItems(items):
     def __init__(self, Item, Price, sOffNum, sOffValue):
-        super.__init__(Item, Price)
+        super().__init__(Item, Price)
         self.sOffNum = sOffNum
         self.sOffValue = sOffValue
 
@@ -27,9 +27,9 @@ def checkout(skus):
     itC = items('C', 20)
     itD = items('D', 15)
 
-    print([vals for vals in skus])
+    print([vals.upper() for vals in skus])
     
-    
+checkout('ab')
 
 
 
