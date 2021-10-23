@@ -22,13 +22,10 @@ class offItems(items):
         return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
         
 def checkout(skus):
-    itA = offItems('A', 50, 3, 130)
-    itB = offItems('B', 30, 2, 45)
-    itC = items('C', 20)
-    itD = items('D', 15)
+    itList = [offItems('A', 50, 3, 130), offItems('B', 30, 2, 45), items('C', 20), items('D', 15)]
 
     basket=[vals.upper() for vals in skus]
-    itemC = items()
-    [x for x in basket if x.Item == basket]
-    
-checkout('ab')
+    for i in basket:
+        basPrices= [x.Price for x in itList if x.Item == i]
+    return sum(basPrices)
+checkout('abc')
