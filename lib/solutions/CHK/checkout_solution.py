@@ -43,8 +43,8 @@ class sItems(items):
     def tPrice(self, iNumber, fBasket):
         sPrice = iNumber*self.Price
         discount = (self.freeItem.sOffValue*int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum) + 
-        (int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*(self.freeItem.Price*self.freeItem.sOffNum - self.freeItem.sOffValue)         
-        if int(iNumber/self.sOffNum)*self.freeItemNum <= fBasket.count(self.freeItem.Item)
+        (int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*(self.freeItem.Price*self.freeItem.sOffNum - self.freeItem.sOffValue)
+        if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
         else self.freeItem.sOffValue*int(fBasket.count(self.freeItem.Item)/self.freeItem.sOffNum) + 
         (fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum)*self.freeItem.Price)
 
@@ -67,5 +67,7 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
+print(checkout('AAAAAEEBAAABB'))
 
 
