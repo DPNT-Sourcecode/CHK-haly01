@@ -21,6 +21,15 @@ class offItems(items):
     def tPrice(self, iNumber, _):
         return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
 
+class pItems(items):
+    def __init__(self, Item, Price, sOffNum, sOffValue):
+        super().__init__(Item, Price)
+        self.sOffNum = sOffNum
+        self.sOffValue = sOffValue
+
+    def tPrice(self, iNumber, _):
+        return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
+
 class multiOffItems(items):
     def __init__(self, Item, Price, sOffNum, sOffValue, lOffNum, lOffValue):
         super().__init__(Item, Price)
