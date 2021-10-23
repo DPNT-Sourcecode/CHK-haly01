@@ -21,6 +21,17 @@ class offItems(items):
     def tPrice(self, iNumber, _):
         return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
 
+class multiOffItems(items):
+    def __init__(self, Item, Price, sOffNum, sOffValue, lOffNum, lOffValue):
+        super().__init__(Item, Price)
+        self.sOffNum = sOffNum
+        self.sOffValue = sOffValue
+        self.lOffNum = lOffNum
+        self.lOffValue = lOffValue
+
+    def tPrice(self, iNumber, _):
+        return self.lOffValue*int(iNumber/self.lOffNum) + self.sOffValue*int(iNumber%self.lOffNum/self.sOffNum) + (int(iNumber%self.lOffNum)%self.sOffNum)*self.Price
+
 
 class sItems(items):
     def __init__(self, Item, Price, sOffNum, freeItem, freeItemNum):
@@ -37,11 +48,10 @@ class sItems(items):
         else self.freeItem.sOffValue*int(fBasket.count(self.freeItem.Item)/self.freeItem.sOffNum) + 
         (fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum)*self.freeItem.Price)
 
-
         return sPrice-discount
 
 def checkout(skus):
-    itA = offItems('A', 50, 3, 130)
+    itA = multiOffItems('A', 50, 3, 130, 5, 200)
     itB = offItems('B', 30, 2, 45)
     itC = items('C', 20)
     itD = items('D', 15)
@@ -58,4 +68,4 @@ def checkout(skus):
     except Exception as e:
         return e
 
-print(checkout('AAABBEED'))
+print(checkout('AAAAABBEED'))
