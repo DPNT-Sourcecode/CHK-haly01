@@ -32,25 +32,6 @@ class multiOffItems(items):
     def tPrice(self, iNumber, _):
         return self.lOffValue*int(iNumber/self.lOffNum) + self.sOffValue*int(iNumber%self.lOffNum/self.sOffNum) + (int(iNumber%self.lOffNum)%self.sOffNum)*self.Price
 
-
-class sItems(items):
-    def __init__(self, Item, Price, sOffNum, freeItem, freeItemNum):
-        super().__init__(Item, Price)
-        self.sOffNum = sOffNum
-        self.freeItem = freeItem
-        self.freeItemNum = freeItemNum
-
-    def tPrice(self, iNumber, fBasket):
-        sPrice = iNumber*self.Price
-        if isinstance(self.freeItem, offItems) or isinstance(self.freeItem, multiOffItems) or isinstance(self.freeItem, selItems):
-            discount = (self.freeItem.sOffValue * int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum) + 
-        (int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*((self.freeItem.Price*self.freeItem.sOffNum-self.freeItem.sOffValue) if fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum == 0 else self.freeItem.Price)
-        if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
-        else self.freeItem.sOffValue*int(fBasket.count(self.freeItem.Item)/self.freeItem.sOffNum) + 
-        (fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum)*self.freeItem.Price)
-
-        return sPrice-discount
-
 class selItems(items):
     def __init__(self, Item, Price, sOffNum, sOffNumFree):
         super().__init__(Item, Price)
@@ -62,6 +43,29 @@ class selItems(items):
             return int(iNumber/(self.sOffNum+self.sOffNumFree)) * 2 * self.Price
         else:
             return (int(iNumber/(self.sOffNum+self.sOffNumFree))*2 + iNumber%(self.sOffNum+self.sOffNumFree)) * self.Price
+class sItems(items):
+    def __init__(self, Item, Price, sOffNum, freeItem, freeItemNum):
+        super().__init__(Item, Price)
+        self.sOffNum = sOffNum
+        self.freeItem = freeItem
+        self.freeItemNum = freeItemNum
+
+    def tPrice(self, iNumber, fBasket):
+        sPrice = iNumber*self.Price
+        if isinstance(self.freeItem, offItems) or isinstance(self.freeItem, multiOffItems) or isinstance(self.freeItem, selItems):
+            discount = (self.freeItem.sOffValue * int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum) + 
+            (int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*((self.freeItem.Price*self.freeItem.sOffNum-self.freeItem.sOffValue) if fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum == 0 else self.freeItem.Price)
+            if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
+            else self.freeItem.sOffValue*int(fBasket.count(self.freeItem.Item)/self.freeItem.sOffNum) + 
+            (fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum)*self.freeItem.Price)
+        else:
+            discount = (int(iNumber/self.sOffNum)* self.freeItem.Price
+            if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
+            else fBasket.count(self.freeItem.Item)*self.freeItem.Price)
+
+        return sPrice-discount
+
+
 
 
        
@@ -102,6 +106,6 @@ def checkout(skus):
         for i in uItems:
             basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i][0])
         return sum(basPrices)
-    except Exception as e:
-        return e
-print(checkout('N'))
+    except:
+        return -1
+print(checkout('UUUU'))
