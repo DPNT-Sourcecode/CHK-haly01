@@ -84,7 +84,7 @@ def checkout(skus):
     itH = multiOffItems('H', 10, 5, 45, 10, 80)
     itI = items('I', 35)
     itJ = items('J', 60)
-    itK = offItems('K', 80, 2, 150)
+    itK = offItems('K', 70, 2, 120)
     itL = items('L', 90)
     itM = items('M', 15)
     itN = sItems('N', 40, 3, itM, 1)
@@ -144,5 +144,6 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
 
 
