@@ -24,7 +24,9 @@ class offItems(items):
 def checkout(skus):
     itA = offItems('A', 50, 3, 130)
     itB = offItems('B', 30, 2, 45)
-    raise NotImplementedError()
+    itC = items('C', 20)
+    itD = items('D', 15)
+    
 
 
 
