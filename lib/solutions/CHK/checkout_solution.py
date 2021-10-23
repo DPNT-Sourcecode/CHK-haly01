@@ -108,4 +108,3 @@ def checkout(skus):
     except Exception as e:
         return e
 print(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'))
-
