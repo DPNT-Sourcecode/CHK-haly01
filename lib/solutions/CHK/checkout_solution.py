@@ -27,8 +27,7 @@ def checkout(skus):
         basket=[vals.upper() for vals in skus]
         basPrices=[]
         for i in basket:
-            basPrices.append([x.Price for x in itList if x.Item == i])
+            basPrices.append([x.Price for x in itList if x.Item == i][0])
         return sum(basPrices)
     except:
         return -1
-print(checkout('ab'))
