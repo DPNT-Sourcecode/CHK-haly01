@@ -23,9 +23,12 @@ class offItems(items):
         
 def checkout(skus):
     itList = [offItems('A', 50, 3, 130), offItems('B', 30, 2, 45), items('C', 20), items('D', 15)]
-
-    basket=[vals.upper() for vals in skus]
-    for i in basket:
-        basPrices= [x.Price for x in itList if x.Item == i]
-    return sum(basPrices)
-checkout('abc')
+    try:
+        basket=[vals.upper() for vals in skus]
+        basPrices=[]
+        for i in basket:
+            basPrices.append([x.Price for x in itList if x.Item == i])
+        return sum(basPrices)
+    except:
+        return -1
+print(checkout('ab'))
