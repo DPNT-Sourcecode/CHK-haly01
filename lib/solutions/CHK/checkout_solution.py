@@ -56,12 +56,14 @@ class selItems(items):
         self.sOffNum = sOffNum
         self.sOffNumFree = sOffNumFree
 
-    def tPrice(self, iNumber, fBasket):
-        if fBasket.count(self.Item)%iNumber =< sOffNumFree:
+    def tPrice(self, iNumber, _):
+        if iNumber%(self.sOffNum+self.sOffNumFree) == 0:
+            return int(iNumber/(self.sOffNum+self.sOffNumFree)) * 2 * self.Price
+        else:
+            return int(iNumber/(self.sOffNum+self.sOffNumFree))*2 + iNumber%(self.sOffNum+self.sOffNumFree) * self.Price
 
-        return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
 
-
+       
 def checkout(skus):
     itA = multiOffItems('A', 50, 3, 130, 5, 200)
     itB = offItems('B', 30, 2, 45)
@@ -80,4 +82,5 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
 
