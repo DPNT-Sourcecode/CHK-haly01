@@ -116,22 +116,26 @@ def checkout(skus):
                     else:
                         basPrices.append([x.tPrice(basket.count(i), basket)][0])
         tempList=[] 
-        for i in offerList:
-            tempList.append([i.Item, basket.count(i.Item), i.Price, i])
-        tempList.sort(key=lambda x:int(x[2]))
-        totalItems = sum([i[1] for i in tempList])
-        Rd = totalItems%tempList[0][3].sOffNum
-        tot = tempList[0][3].sOffValue*int(totalItems/tempList[0][3].sOffNum)
-        runningTot = 0
-        for x in tempList:
-            if Rd>x[1]:
-                runningTot= runningTot + x[1]*x[2]
-                Rd=Rd-x[1]
-            else:
-                runningTot= runningTot + Rd*x[2]
-                break
-        basPrices.append(tot+runningTot)
+        try:
+            for i in offerList:
+                tempList.append([i.Item, basket.count(i.Item), i.Price, i])
+            tempList.sort(key=lambda x:int(x[2]))
+            totalItems = sum([i[1] for i in tempList])
+            Rd = totalItems%tempList[0][3].sOffNum
+            tot = tempList[0][3].sOffValue*int(totalItems/tempList[0][3].sOffNum)
+            runningTot = 0
+            for x in tempList:
+                if Rd>x[1]:
+                    runningTot= runningTot + x[1]*x[2]
+                    Rd=Rd-x[1]
+                else:
+                    runningTot= runningTot + Rd*x[2]
+                    break
+            basPrices.append(tot+runningTot)
+        except:
+            pass
         return sum(basPrices)
     except:
         return -1
+
 
