@@ -40,9 +40,10 @@ class selItems(items):
 
     def tPrice(self, iNumber, _):
         if iNumber%(self.sOffNum+self.sOffNumFree) == 0:
-            return int(iNumber/(self.sOffNum+self.sOffNumFree)) * 2 * self.Price
+            return int(iNumber/(self.sOffNum+self.sOffNumFree))*self.sOffNum * self.Price
         else:
-            return (int(iNumber/(self.sOffNum+self.sOffNumFree))*2 + iNumber%(self.sOffNum+self.sOffNumFree)) * self.Price
+            return (int(iNumber/(self.sOffNum+self.sOffNumFree))*self.sOffNum + iNumber%(self.sOffNum+self.sOffNumFree)) * self.Price
+
 class sItems(items):
     def __init__(self, Item, Price, sOffNum, freeItem, freeItemNum):
         super().__init__(Item, Price)
@@ -108,4 +109,3 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
-print(checkout('UUUU'))
