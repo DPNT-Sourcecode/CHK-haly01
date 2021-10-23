@@ -32,6 +32,3 @@ def checkout(skus):
     [x for x in basket if x.Item == basket]
     
 checkout('ab')
-
-
-
