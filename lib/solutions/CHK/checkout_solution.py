@@ -26,6 +26,9 @@ def checkout(skus):
     itB = offItems('B', 30, 2, 45)
     itC = items('C', 20)
     itD = items('D', 15)
+
+    print([vals for vals in skus])
+    
     
 
 
