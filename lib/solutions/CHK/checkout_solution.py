@@ -20,13 +20,11 @@ class offItems(items):
 
     def tPrice(self, iNumber):
         return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
-    
-    
-
-
-        
         
 def checkout(skus):
+    itA = offItems('A', 50, 3, 130)
+    itB = offItems('B', 30, 2, 45)
     raise NotImplementedError()
+
 
 
