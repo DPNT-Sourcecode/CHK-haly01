@@ -61,7 +61,6 @@ class sItems(items):
             (fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum)*self.freeItem.Price)
 
         else:
-            print('Here is the problem')
             discount = (int(iNumber/self.sOffNum)* self.freeItem.Price
             if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
             else fBasket.count(self.freeItem.Item)*self.freeItem.Price)
@@ -112,3 +111,4 @@ def checkout(skus):
     except:
         return -1
 print(checkout('PPPPPPQRUVQRUVQRUVSU'))
+
