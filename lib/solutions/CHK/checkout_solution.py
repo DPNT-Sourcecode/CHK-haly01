@@ -119,13 +119,10 @@ def checkout(skus):
         for i in offerList:
             tempList.append([i.Item, basket.count(i.Item), i.Price, i])
         tempList.sort(key=lambda x:int(x[2]))
-        print('First Check')
         totalItems = sum([i[1] for i in tempList])
-        print(totalItems)
         Rd = totalItems%tempList[0][3].sOffNum
         tot = tempList[0][3].sOffValue*int(totalItems/tempList[0][3].sOffNum)
         runningTot = 0
-        print(tot)
         for x in tempList:
             if Rd>x[1]:
                 runningTot= runningTot + x[1]*x[2]
@@ -137,4 +134,3 @@ def checkout(skus):
         return sum(basPrices)
     except Exception as e:
         return e
-print(checkout('XGSJATXBZY'))
