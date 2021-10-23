@@ -92,14 +92,14 @@ def checkout(skus):
     itP = offItems('P', 50, 5, 200)
     itQ = offItems('Q', 30, 3, 80)
     itR = sItems('R', 50, 3, itQ, 1)
-    itS = items('S', 30)
-    itT = items('T', 20)
+    itS = pItems('S', 20, 3, 45)
+    itT = pItems('T', 20, 3 , 45)
     itU = selItems('U', 40, 3, 1)
     itV = multiOffItems('V', 50, 2, 90, 3, 130)
     itW = items('W', 20)
-    itX = items('X', 90)
-    itY = items('Y', 10)
-    itZ = items('Z', 50)
+    itX = pItems('X', 17, 3, 45)
+    itY = pItems('Y', 20, 3, 45)
+    itZ = pItems('Z', 21, 3, 45)
 
     
     itList = [itA, itB, itC, itD, itE, itF, itG, itH, itI, itJ, itK, itL, itM, itN, itO, itP, itQ, itR, itS, itT, itU, itV, itW, itX, itY, itZ]
@@ -108,7 +108,7 @@ def checkout(skus):
         uItems = set(basket)
         basPrices=[]
         for i in uItems:
-            basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i][0])
+            basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if x.Item == i and not isinstance(x, pItems)][0])
         return sum(basPrices)
     except:
         return -1
