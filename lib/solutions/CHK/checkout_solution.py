@@ -54,8 +54,7 @@ class sItems(items):
     def tPrice(self, iNumber, fBasket):
         sPrice = iNumber*self.Price
         if isinstance(self.freeItem, offItems) or isinstance(self.freeItem, selItems) or isinstance(self.freeItem, multiOffItems):
-            print(self.freeItem.sOffValue * int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum))
-            print((int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*((self.freeItem.Price*self.freeItem.sOffNum-self.freeItem.sOffValue) if fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum == 0 else self.freeItem.Price))
+            print((int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*((self.freeItem.Price*self.freeItem.sOffNum-self.freeItem.sOffValue)))
             discount = (self.freeItem.sOffValue * int(int(iNumber/self.sOffNum)/self.freeItem.sOffNum) + 
             (int(iNumber/self.sOffNum)%self.freeItem.sOffNum)*((self.freeItem.Price*self.freeItem.sOffNum-self.freeItem.sOffValue) if fBasket.count(self.freeItem.Item)%self.freeItem.sOffNum == 0 else self.freeItem.Price)
             if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
@@ -67,15 +66,8 @@ class sItems(items):
             if int(iNumber/self.sOffNum)*self.freeItemNum < fBasket.count(self.freeItem.Item)
             else fBasket.count(self.freeItem.Item)*self.freeItem.Price)
 
-        print(sPrice)
-        print(discount)
-
         return sPrice-discount
-
-
-## R is the problem with Q
-
-       
+    
 def checkout(skus):
     itA = multiOffItems('A', 50, 3, 130, 5, 200)
     itB = offItems('B', 30, 2, 45)
@@ -115,7 +107,7 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
-print(checkout('PPPPPPQRUVQRUVQRUVSU'))
+print(checkout('PPPPPPQQQRRRUUUUVVVS'))
 
 
 
