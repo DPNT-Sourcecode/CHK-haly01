@@ -109,8 +109,12 @@ def checkout(skus):
         basPrices=[]
         offerList=[]
         for i in uItems:
-            basPrices.append([x.tPrice(basket.count(i), basket) for x in itList if (x.Item == i and not isinstance(x, pItems))][0])
-            offerList.append([x for x in itList if x.Item == i and isinstance(x, pItems)][0])
+            for x in itList:
+                if x.Item == i:
+                    if isinstance(x, pItems):
+                        offerList.append([x])
+                    else:
+                        basPrices.append([x.tPrice(basket.count(i), basket)][0])
         tempList=[] 
         for i in offerList:
             tempList.append([i.Item, basket.count(i.Item), i.Price])
@@ -133,4 +137,5 @@ def checkout(skus):
     except Exception as e:
         return e
 print(checkout('XGSJATXBZY'))
+
 
