@@ -20,7 +20,18 @@ class offItems(items):
 
     def tPrice(self, iNumber):
         return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
-        
+
+
+class sItems(items):
+    def __init__(self, Item, Price, sOffNum, freeItem, freeItemNum):
+        super().__init__(Item, Price)
+        self.sOffNum = sOffNum
+        self.freeItem = freeItem
+        self.freeItemNum = freeItemNum
+
+    def tPrice(self, iNumber):
+        return self.sOffValue*int(iNumber/self.sOffNum) + (iNumber%self.sOffNum)*self.Price
+
 def checkout(skus):
     itList = [offItems('A', 50, 3, 130), offItems('B', 30, 2, 45), items('C', 20), items('D', 15)]
     try:
@@ -33,4 +44,5 @@ def checkout(skus):
         return sum(basPrices)
     except:
         return -1
+
 
